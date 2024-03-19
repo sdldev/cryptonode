@@ -26,7 +26,7 @@ const HomeHero = () => {
             className="font-heading text-4xl font-bold sm:text-5xl md:text-6xl lg:text-7xl !leading-[1.1] text-balance"
           >
             <span className="text-gradient_indigo-purple">
-              CIMMY NODE
+              Crypto Node
             </span>
           </h1>
           <h2 className="max-w-[42rem] leading-normal sm:text-xl sm:leading-8 text-2xl">
