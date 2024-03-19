@@ -12,9 +12,9 @@ export const navMenuConfig: NavMenuConfig = {
         },
 
         {
-          title: "Project Mainnet",
+          title: "Project Testnet",
           href: "/testnet",
-          description: "Project Nodes Mainnet cosmos network",
+          description: "Project Nodes Testnet cosmos network",
         },
       ],
     },
