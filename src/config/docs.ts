@@ -19,19 +19,10 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Pendahuluan",
-          href: "/docs/uang-saku",
+          href: "/docs/uang",
           // disabled: true,
         },
-        {
-          title: "Untuk Pengasuh",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-        {
-          title: "Untuk Wali Santri",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
+
       ],
     },
     {
@@ -39,19 +30,10 @@ export const docsConfig: DocsConfig = {
       items: [
         {
           title: "Pendahuluan",
-          href: "/docs/setor-hafalan",
+          href: "/docs/setor",
           // disabled: true,
         },
-        {
-          title: "Untuk Pengasuh",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
-        {
-          title: "Untuk Wali Santri",
-          href: "/docs/in-progress",
-          disabled: true,
-        },
+
       ],
     },
   ],
