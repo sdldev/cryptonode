@@ -1,28 +1,54 @@
 ---
-import ProjectPostLayout from '@/components/layout/project-post.astro';
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { MdxComponents } from "@/application/content/mdx-components";
+import DocsSidebarNav from "@/components/layout/sidebar-nav.astro";
+import DocsPager from "@/components/layout/pager.astro";
+import { docsConfig } from "@/config/docs";
+import DocsLayout from "@/components/layout/docs-layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export async function getStaticPaths() {
-	const posts = await getCollection('project');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const docs = await getCollection("project");
+  return docs.map((doc) => ({
+    params: { slug: doc.slug },
+    props: doc,
+  }));
 }
 
-type Props = CollectionEntry<'project'>;
+type Props = CollectionEntry<"project">;
 
-const post = Astro.props;
+const doc = Astro.props;
 const slug = Astro.params.slug;
-const { Content } = await post.render();
 
-if (!slug || !post) {
+const { Content } = await doc.render();
+
+if (!slug || !doc) {
   return new Response(null, {
     status: 404,
-    statusText: 'Not found'
+    statusText: "Not found",
   });
 }
 ---
-<ProjectPostLayout {...post}>
-	<Content />
-</ProjectPostLayout>
+
+<DocsLayout title={doc.data.title} description={doc.data.description}>
+  <div class="container flex-1">
+    <div
+      class="flex-1 md:grid md:grid-cols-[220px_1fr] md:gap-6 lg:grid-cols-[240px_1fr] lg:gap-10"
+    >
+      <aside
+        class="fixed top-18 z-30 hidden h-[calc(100vh-3.5rem)] w-full shrink-0 overflow-y-auto border-r py-6 pr-2 md:sticky md:block lg:py-8"
+      >
+        <DocsSidebarNav items={docsConfig.sidebarNav} />
+      </aside>
+      <main
+        class="relative py-6 lg:gap-10 lg:py-10 xl:grid xl:grid-cols-[1fr_300px]"
+      >
+        <div class="mx-auto w-full min-w-0">
+           <Content components={MdxComponents} />
+          <hr class="my-4 md:my-6" />
+          <DocsPager slug={doc.slug} />
+        </div>
+
+      </main>
+    </div>
+  </div>
+</DocsLayout>
