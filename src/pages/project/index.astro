@@ -1,0 +1,20 @@
+---
+import ProjectHeader from "@/components/layout/project-header.astro";
+import ProjectCard from "@/components/cards/project-card.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getProjects } from "@/lib/fetchersprojects";
+
+const posts = await getProjects();
+---
+
+<MainLayout title="Project">
+  <section class="container py-10">
+    <ProjectHeader title="Projects" />
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 md:gap-y-11 lg:gap-y-16 lg:gap-x-8"
+    >
+      {posts.map((post) => <ProjectCard {...post} />)}
+    </div>
+  </section>
+</MainLayout>
