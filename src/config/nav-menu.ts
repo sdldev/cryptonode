@@ -7,13 +7,13 @@ export const navMenuConfig: NavMenuConfig = {
       items: [
         {
           title: "Project Mainnet",
-          href: "/mainnet",
+          href: "/project/category/mainnet",
           description: "Project Nodes Mainnet cosmos network",
         },
 
         {
           title: "Project Testnet",
-          href: "/testnet",
+          href: "/project/category/testnet",
           description: "Project Nodes Testnet cosmos network",
         },
       ],
